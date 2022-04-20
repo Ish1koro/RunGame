@@ -15,6 +15,7 @@ TagManager:
   - Water
   - UI
   - Character
+  - 
   - Ground
   - 
   - 
@@ -38,9 +39,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - BackGround
   m_SortingLayers:
   - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
     uniqueID: 0
     locked: 0

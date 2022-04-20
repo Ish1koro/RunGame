@@ -13,8 +13,14 @@ public class PlayerData : MonoBehaviour
 
     #endregion
 
+    /// <summary>
+    /// Player‚Ì–¼‘O
+    /// </summary>
     private string _player_Name = default;
 
+    /// <summary>
+    /// Player‚ªi‚Ü‚¹‚½‹——£
+    /// </summary>
     private float _player_Distance = default;
 
     public void EnterName()

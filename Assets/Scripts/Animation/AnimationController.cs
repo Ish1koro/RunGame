@@ -4,5 +4,14 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    private Animation 
+    [SerializeField] private Animation _anim = default;
+
+    public void ChangeAnimation(int state)
+    {
+        switch (state)
+        {
+            case (int)Variables.CharaStats.Idle:
+                break;
+        }
+    }
 }

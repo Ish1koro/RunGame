@@ -26,14 +26,43 @@ public class CharacterController : MonoBehaviour
     private int _character_Move_Speed = default;
 
     private int _life = default;
+
+    protected int _move_Direction = Variables._one;
     #endregion
 
     #region float
+    /// <summary>
+    /// 重力加速度の時間
+    /// </summary>
+    private float _fall_Timer = default;
 
+    /// <summary>
+    /// Jumpの強さ
+    /// </summary>
+    /// <returns></returns>
+    private float _jumpPower()
+    {
+
+
+        return 1;
+    }
     #endregion
 
     #region bool
-    protected bool _isGround = default;
+    protected bool _isJump = default;
+
+    /// <summary>
+    /// 地面の着地判定
+    /// </summary>
+    /// <returns>Groundのレイヤーだったらtrue</returns>
+    protected bool _isGround()
+    {
+        if (Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer))
+        {
+            return true;
+        }
+        return false;
+    }
     #endregion
 
     //-------------------------------------------------------------
@@ -50,24 +79,70 @@ public class CharacterController : MonoBehaviour
     {
         Move();
 
+        if (_isGround() && _isJump)
+        {
+            Jump();
+        }
+        else if (_isGround())
+        {
+            _move_Vector.y = Variables._zero;
+        }
+        else
+        {
+            Fall();
+        }
+
         transform.position += (Vector3)_move_Vector;
     }
 
     //-------------------------------------------------------------
 
+    /// <summary>
+    /// 入力のクラス(親ではいじらない)
+    /// </summary>
+    protected virtual void Input()
+    {
+
+    }
+
+    //-------------------------------------------------------------
+
+    /// <summary>
+    /// Characterの移動
+    /// </summary>
     protected virtual void Move()
     {
-        _move_Vector.x = _character_Move_Speed;
+        _move_Vector.x = _character_Move_Speed * Time.deltaTime;
     }
 
     //-------------------------------------------------------------
+    
+    /// <summary>
+    /// Jump処理
+    /// </summary>
     protected virtual void Jump()
     {
-        
+        _move_Vector.y = _jumpPower();
     }
 
     //-------------------------------------------------------------
 
+    /// <summary>
+    /// 重力
+    /// </summary>
+    private void Fall()
+    {
+        _fall_Timer += Time.deltaTime;
+
+        _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
+    }
+
+    //-------------------------------------------------------------
+
+    /// <summary>
+    /// damage処理
+    /// </summary>
+    /// <param name="damage">攻撃された値</param>
     private void CharaLifeCalculation(int damage)
     {
         _life -= damage;
@@ -80,12 +155,17 @@ public class CharacterController : MonoBehaviour
 
     //-------------------------------------------------------------
 
-    private void CharacterAnimation(int )
+    /// <summary>
+    /// Animationの処理ををAnimationのクラスに渡す
+    /// </summary>
+    /// <param name="state">Charaの状態</param>
+    private void CharacterAnimation(int state)
     {
-
+        _animc.ChangeAnimation(state);
     }
 
     //-------------------------------------------------------------
+
 
     private void Death()
     {

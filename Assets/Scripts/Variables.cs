@@ -24,6 +24,14 @@ public static class Variables
     public static string _name_Field { get; } = "NameField";
     #endregion
 
+    #region float
+    public static float _character_height { get; } = 0.26f;
+
+    public static float _chracter_jump_height { get; } = 5;
+
+    public static float _default_Gravity { get; } = -9.8f;
+    #endregion
+
     public enum CharaStats
     {
         Idle,

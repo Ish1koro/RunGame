@@ -10,27 +10,42 @@ public class PlayerController : CharacterController
     /// Player‚Ì“ü—Í‚ð‚Æ‚é
     /// </summary>
     private PlayerInput _playerin = default;
-
-    /// <summary>
-    /// Jump‚ÌCurve
-    /// </summary>
-    private AnimationCurve _jump_Curve = default;
     #endregion
-    
+
     //-------------------------------------------------------------
 
     protected override void Start()
     {
         base.Start();
         _playerin = GetComponent<PlayerInput>();
-
     }
 
     //-------------------------------------------------------------
 
     protected override void Update()
     {
-        
+        base.Update();
+    }
+
+    //-------------------------------------------------------------
+
+    protected override void Input()
+    {
+        _isJump = _playerin.actions[Variables._jump].triggered;
+    }
+
+    //-------------------------------------------------------------
+
+    protected override void Move()
+    {
+        base.Move();
+    }
+
+    //-------------------------------------------------------------
+
+    protected override void Jump()
+    {
+        base.Jump();
     }
 
     //-------------------------------------------------------------
