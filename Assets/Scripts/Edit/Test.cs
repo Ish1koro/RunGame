@@ -9,4 +9,9 @@ public class Test : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector2.down * _distance, Color.blue);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, Vector2.down * _distance);
+    }
 }

@@ -42,8 +42,6 @@ public class CharacterController : MonoBehaviour
     /// <returns></returns>
     private float _jumpPower()
     {
-
-
         return 1;
     }
     #endregion
@@ -57,11 +55,7 @@ public class CharacterController : MonoBehaviour
     /// <returns>GroundÇÃÉåÉCÉÑÅ[ÇæÇ¡ÇΩÇÁtrue</returns>
     protected bool _isGround()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer))
-        {
-            return true;
-        }
-        return false;
+        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
     }
     #endregion
 
@@ -86,6 +80,7 @@ public class CharacterController : MonoBehaviour
         else if (_isGround())
         {
             _move_Vector.y = Variables._zero;
+            _fall_Timer = Variables._zero;
         }
         else
         {
@@ -132,9 +127,11 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
-        _fall_Timer += Time.deltaTime;
+        Debug.Log(_isGround());
 
-        _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
+        //_fall_Timer += Time.deltaTime;
+
+        //_move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
     }
 
     //-------------------------------------------------------------

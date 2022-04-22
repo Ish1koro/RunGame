@@ -12,6 +12,8 @@ public class PlayerController : CharacterController
     private PlayerInput _playerin = default;
     #endregion
 
+    private float _move_Distance = default;
+
     //-------------------------------------------------------------
 
     protected override void Start()
