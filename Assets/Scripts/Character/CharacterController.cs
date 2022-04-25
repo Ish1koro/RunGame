@@ -55,7 +55,7 @@ public class CharacterController : MonoBehaviour
     /// <returns>Ground‚ÌƒŒƒCƒ„[‚¾‚Á‚½‚çtrue</returns>
     protected bool _isGround()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
+        return Physics2D.BoxCast(transform.position, Vector2.down, 90, Vector2.down * Variables._character_height, Variables._ground_Layer);
     }
     #endregion
 
