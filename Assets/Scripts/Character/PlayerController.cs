@@ -22,25 +22,12 @@ public class PlayerController : CharacterController
         _playerin = GetComponent<PlayerInput>();
     }
 
-    //-------------------------------------------------------------
-
-    protected override void Update()
-    {
-        base.Update();
-    }
 
     //-------------------------------------------------------------
 
     protected override void Input()
     {
         _isJump = _playerin.actions[Variables._jump].triggered;
-    }
-
-    //-------------------------------------------------------------
-
-    protected override void Move()
-    {
-        base.Move();
     }
 
     //-------------------------------------------------------------

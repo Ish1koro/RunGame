@@ -10,9 +10,10 @@ public static class Variables
     public static int _four { get; } = 4;
     public static int _five { get; } = 5;
     public static int _six { get; } = 6;
+    public static int _seven { get; } = 7;
     public static int _ten { get; } = 10;
 
-    public static int _ground_Layer { get; } = 1 << 3;
+    public static int _ground_Layer { get; } = 1 << 8;
     #endregion
 
     #region string
@@ -35,9 +36,11 @@ public static class Variables
     public enum CharaStats
     {
         Idle,
-        Move,
+        Walk,
+        Dash,
+        Jump,
+        Fall,
         Damage,
         Death,
-        Jump
     }
 }

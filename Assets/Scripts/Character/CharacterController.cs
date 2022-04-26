@@ -28,6 +28,8 @@ public class CharacterController : MonoBehaviour
     private int _life = default;
 
     protected int _move_Direction = Variables._one;
+
+    private int _state = default;
     #endregion
 
     #region float
@@ -55,7 +57,7 @@ public class CharacterController : MonoBehaviour
     /// <returns>Groundのレイヤーだったらtrue</returns>
     protected bool _isGround()
     {
-        return Physics2D.BoxCast(transform.position, Vector2.down, 90, Vector2.down * Variables._character_height, Variables._ground_Layer);
+        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
     }
     #endregion
 
@@ -73,12 +75,17 @@ public class CharacterController : MonoBehaviour
     {
         Move();
 
-        if (_isGround() && _isJump)
+        if (_isGround())
         {
-            Jump();
-        }
-        else if (_isGround())
-        {
+            if (_isJump)
+            {
+                Jump();
+
+                return;
+            }
+
+            Debug.Log("hit");
+
             _move_Vector.y = Variables._zero;
             _fall_Timer = Variables._zero;
         }
@@ -123,15 +130,13 @@ public class CharacterController : MonoBehaviour
     //-------------------------------------------------------------
 
     /// <summary>
-    /// 重力
+    /// 重力の処理
     /// </summary>
     private void Fall()
     {
-        Debug.Log(_isGround());
+        _fall_Timer += Time.deltaTime;
 
-        //_fall_Timer += Time.deltaTime;
-
-        //_move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
+        _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
     }
 
     //-------------------------------------------------------------
@@ -156,15 +161,27 @@ public class CharacterController : MonoBehaviour
     /// Animationの処理ををAnimationのクラスに渡す
     /// </summary>
     /// <param name="state">Charaの状態</param>
-    private void CharacterAnimation(int state)
+    private void CharacterAnimation()
     {
-        _animc.ChangeAnimation(state);
+        _animc.ChangeAnimation(_state);
     }
 
     //-------------------------------------------------------------
 
-
+    /// <summary>
+    /// 死亡した際の処理
+    /// </summary>
     private void Death()
+    {
+
+    }
+
+    //-------------------------------------------------------------
+
+    /// <summary>
+    /// カメラ外に出た際の処理
+    /// </summary>
+    private void OnBecameInvisible()
     {
 
     }

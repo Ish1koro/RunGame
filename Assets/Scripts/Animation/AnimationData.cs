@@ -9,5 +9,6 @@ public class AnimationData : ScriptableObject
     public Sprite[] Walk = default;
     public Sprite[] Dash = default;
     public Sprite[] Jump = default;
+    public Sprite[] Fall = default;
     public Sprite[] Damage = default;
 }

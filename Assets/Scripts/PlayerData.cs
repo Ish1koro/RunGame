@@ -23,6 +23,14 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     private float _player_Distance = default;
 
+    private int _select_Character = default;
+
+    public int _use_Character
+    {
+        get { return _select_Character; }
+    }
+
+
     public void EnterName()
     {
         if (GameObject.FindWithTag(Variables._name_Field).TryGetComponent(out _name))

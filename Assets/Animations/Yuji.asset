@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd13f7c7a5d6e498c02dbfc6cf39e9, type: 3}
+  m_Name: Yuji
+  m_EditorClassIdentifier: 
+  Idle:
+  - {fileID: 21300000, guid: 308d931978a8e4bcaa8db41627510be6, type: 3}
+  - {fileID: 21300000, guid: 40a36153f756545cd85ed8410de71e28, type: 3}
+  - {fileID: 21300000, guid: cfe61d65ffd754e468931cf68cbb71eb, type: 3}
+  - {fileID: 21300000, guid: 8f4bf602d67d9442c8628cd15afb57ce, type: 3}
+  Walk:
+  - {fileID: 21300000, guid: afeab16c3240f4710becb20cc972ca2c, type: 3}
+  - {fileID: 21300000, guid: c2189fa89305a49e1b99d6113f5febe1, type: 3}
+  - {fileID: 21300000, guid: 55a01fd7c360e4255af54f8acc74053d, type: 3}
+  - {fileID: 21300000, guid: 33cc971c178fd430d88a2d2ce3cbd6fb, type: 3}
+  - {fileID: 21300000, guid: a47e97c8f52ab4f28a988a655589ae12, type: 3}
+  - {fileID: 21300000, guid: 0c2894996960f4ccd98f7fdab08a4521, type: 3}
+  Dash:
+  - {fileID: 21300000, guid: 04541ee504f6d4ce0afb1db10e806152, type: 3}
+  - {fileID: 21300000, guid: d4aafd8081f124cf39ab4e02051dd2e8, type: 3}
+  - {fileID: 21300000, guid: 079f3916ceb21431a94d9e75a823ead3, type: 3}
+  - {fileID: 21300000, guid: 63cb2ccf6a9ee4275b14e76affbfa879, type: 3}
+  - {fileID: 21300000, guid: 3021b9cc5367346b889ab212de889a59, type: 3}
+  - {fileID: 21300000, guid: 7a3e656b9c77246a5a9341d2530e9fb1, type: 3}
+  - {fileID: 21300000, guid: 3a20271372fa34141ae10e4275e88b11, type: 3}
+  - {fileID: 21300000, guid: e1b15f9d4593d4b029818efed5a8072a, type: 3}
+  Jump:
+  - {fileID: 21300000, guid: dc35241a2895f40f28f33876bf23781f, type: 3}
+  - {fileID: 21300000, guid: 56a3a83472e3b42a38766d592a92d8d7, type: 3}
+  - {fileID: 21300000, guid: 5561a7e39ab384a658164fc8a908d3a2, type: 3}
+  - {fileID: 21300000, guid: ded44b60a3ad0430fabc26389a13cf74, type: 3}
+  - {fileID: 21300000, guid: 52cc65da85d744e10862168f699c4451, type: 3}
+  Fall:
+  - {fileID: 21300000, guid: cbe192ba346c34584b177507f1cd00b1, type: 3}
+  - {fileID: 21300000, guid: 48abf0c87d56840de85656d627f337ce, type: 3}
+  - {fileID: 21300000, guid: e43223a6a1dac4220866ade59ae48b4d, type: 3}
+  - {fileID: 21300000, guid: 95f63d63eb6474af2920f65dd01c2c8a, type: 3}
+  Damage:
+  - {fileID: 21300000, guid: 9e8360311bba44c29bec7f864cce96a0, type: 3}
+  - {fileID: 21300000, guid: f6f3792fa3247484d9362b7fd72aaf9b, type: 3}
+  - {fileID: 21300000, guid: bc3ceb6590f4f4e1386d779ebf3d071c, type: 3}

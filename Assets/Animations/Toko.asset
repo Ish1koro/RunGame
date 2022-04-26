@@ -37,6 +37,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f209f60c4282f4997a391a1816c48cce, type: 3}
   - {fileID: 21300000, guid: 949488e89293f4aa09ef3813d4084351, type: 3}
   - {fileID: 21300000, guid: 8257e43b5b8e04ef98dcbb53ecedc42d, type: 3}
+  Fall:
   - {fileID: 21300000, guid: c2a43cf35286f45308b7bda65ff5e86c, type: 3}
   - {fileID: 21300000, guid: 25882ab028253487dbc70e0f893375da, type: 3}
   Damage:

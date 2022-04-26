@@ -4,9 +4,9 @@ labels:
 - Unitychan
 - 2d
 TextureImporter:
-  internalIDToNameTable: []
+  fileIDToRecycleName: {}
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -90,12 +90,10 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 2679a22a9bf0c40d7b7e67a308f44bf6
-    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

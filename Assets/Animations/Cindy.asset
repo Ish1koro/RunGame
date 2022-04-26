@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dd13f7c7a5d6e498c02dbfc6cf39e9, type: 3}
+  m_Name: Cindy
+  m_EditorClassIdentifier: 
+  Idle:
+  - {fileID: 21300000, guid: 3051bf59fccad41a89f7279f9aa4e6e6, type: 3}
+  - {fileID: 21300000, guid: 37ee74a30c85145608983ba5452f49b2, type: 3}
+  - {fileID: 21300000, guid: 0f3c2f1ec5c7c418e8f10f7996216331, type: 3}
+  Walk:
+  - {fileID: 21300000, guid: 6491178c856ad403ba75a6a01cf94c19, type: 3}
+  - {fileID: 21300000, guid: b6c3c4fdea2c94dee90dac314488c266, type: 3}
+  - {fileID: 21300000, guid: 5934a9eac00bc49b2a745d702662e75f, type: 3}
+  - {fileID: 21300000, guid: d689c718d33df4dbab9321d8c8247a87, type: 3}
+  - {fileID: 21300000, guid: f0a7eba5585ff411289442cf3d4ccabc, type: 3}
+  - {fileID: 21300000, guid: 0aea2b999636941bab33e71bc0db50c1, type: 3}
+  - {fileID: 21300000, guid: aaa6da5c61d944fd58cc6fe9614084f1, type: 3}
+  - {fileID: 21300000, guid: 1acb67945ba654b28b3af119c2a53f0c, type: 3}
+  - {fileID: 21300000, guid: 6c67d65fe27164dcab4e4bb54e3aaefe, type: 3}
+  - {fileID: 21300000, guid: e51ecbd0e36fb4f65a971e319bb28ef9, type: 3}
+  - {fileID: 21300000, guid: f41a8c2e47d884089b642b87502c5072, type: 3}
+  - {fileID: 21300000, guid: 23a7e68c776d3420bb8cf1478d4b4419, type: 3}
+  - {fileID: 21300000, guid: b6d287f0f91434886b6cd0b96a808b42, type: 3}
+  - {fileID: 21300000, guid: bce2ca957099f4dfc98f4480aea2c87b, type: 3}
+  Dash:
+  - {fileID: 21300000, guid: 8c49265184e5c407baa42ab533efceff, type: 3}
+  - {fileID: 21300000, guid: a17a4cb41fbae40ea828c83c0d4a8cfc, type: 3}
+  - {fileID: 21300000, guid: 1e2952f3ab4194a21abf673249007d12, type: 3}
+  - {fileID: 21300000, guid: 915ce97da3b374a64bf603cdeb5d59da, type: 3}
+  - {fileID: 21300000, guid: c1f870aa69ad44f00a2a2797dffde8a0, type: 3}
+  - {fileID: 21300000, guid: 4f2ab8d2ae9aa4c98be16530db4fe019, type: 3}
+  - {fileID: 21300000, guid: 5475c3e6ea5954032a19dbdacf3d84b3, type: 3}
+  - {fileID: 21300000, guid: 45ea94ff7b9a2417aabb2ab89bc9b92f, type: 3}
+  - {fileID: 21300000, guid: 87dc4b3b54b234f149610d225113b22a, type: 3}
+  - {fileID: 21300000, guid: da9a21e3ff2d24de8bd32a141ac11959, type: 3}
+  - {fileID: 21300000, guid: 48583118c3dc14c589756c2bc997945e, type: 3}
+  - {fileID: 21300000, guid: 67dc4e449b59a4720a03a105175872cc, type: 3}
+  - {fileID: 21300000, guid: 1286768d863b54fae9835c526b37012e, type: 3}
+  - {fileID: 21300000, guid: 8b0da19fe84ad46d997e73aa4719b96f, type: 3}
+  - {fileID: 21300000, guid: d48219e2b6fa34f55a4fc0105f2f3f46, type: 3}
+  - {fileID: 21300000, guid: b20d6248d46d74250b547dfbd41c593d, type: 3}
+  - {fileID: 21300000, guid: efa06102c47e74bf0841a84e1953e99c, type: 3}
+  - {fileID: 21300000, guid: 38a4319af9506480d99211d90465dd37, type: 3}
+  Jump:
+  - {fileID: 21300000, guid: e0df6e038b14049f0b5f2666cd30304a, type: 3}
+  - {fileID: 21300000, guid: db1ecb07a87714c2697d2156c07168b8, type: 3}
+  - {fileID: 21300000, guid: a9825d0fd7f254de8b9713d001dc9771, type: 3}
+  - {fileID: 21300000, guid: 2649a0919cdf245018d8e46955f92e79, type: 3}
+  - {fileID: 21300000, guid: 06835ac2812d1483cbfbb2e77f2fcd0a, type: 3}
+  - {fileID: 21300000, guid: 222996eea954b4fb7a06e6666ec0e2c2, type: 3}
+  Fall:
+  - {fileID: 21300000, guid: 06835ac2812d1483cbfbb2e77f2fcd0a, type: 3}
+  - {fileID: 21300000, guid: 222996eea954b4fb7a06e6666ec0e2c2, type: 3}
+  Damage:
+  - {fileID: 21300000, guid: 5b1f73001f8514a9aaeafb2de958ad56, type: 3}
+  - {fileID: 21300000, guid: 5eb3721a1126340fabe3dec8af8f5af8, type: 3}
+  - {fileID: 21300000, guid: 75621aeb04f6744ef881c5e32c8c92d2, type: 3}
+  - {fileID: 21300000, guid: ce5f62672779d4bd1b3f858c6acedba7, type: 3}
+  - {fileID: 21300000, guid: 059baf0824c8946bf8f8cb884169d1fd, type: 3}
