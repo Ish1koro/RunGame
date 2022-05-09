@@ -84,8 +84,6 @@ public class CharacterController : MonoBehaviour
                 return;
             }
 
-            Debug.Log("hit");
-
             _move_Vector.y = Variables._zero;
             _fall_Timer = Variables._zero;
         }
@@ -93,6 +91,8 @@ public class CharacterController : MonoBehaviour
         {
             Fall();
         }
+
+        CharacterAnimation();
 
         transform.position += (Vector3)_move_Vector;
     }
@@ -160,10 +160,9 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// Animation‚Ìˆ—‚ğ‚ğAnimation‚ÌƒNƒ‰ƒX‚É“n‚·
     /// </summary>
-    /// <param name="state">Chara‚Ìó‘Ô</param>
     private void CharacterAnimation()
     {
-        _animc.ChangeAnimation(_state);
+        _animc.Animation(_state);
     }
 
     //-------------------------------------------------------------

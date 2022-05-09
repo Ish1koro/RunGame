@@ -22,7 +22,6 @@ public class PlayerController : CharacterController
         _playerin = GetComponent<PlayerInput>();
     }
 
-
     //-------------------------------------------------------------
 
     protected override void Input()
@@ -35,6 +34,13 @@ public class PlayerController : CharacterController
     protected override void Jump()
     {
         base.Jump();
+    }
+
+    //-------------------------------------------------------------
+
+    private void GetDistanse()
+    {
+
     }
 
     //-------------------------------------------------------------

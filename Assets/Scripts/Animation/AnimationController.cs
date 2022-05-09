@@ -27,8 +27,8 @@ public class AnimationController : MonoBehaviour
     /// <summary>
     /// アニメーション
     /// </summary>
-    /// <param name="state">今のキャラクターの状態</param>
-    public void ChangeAnimation(int state)
+    /// <param name="state">キャラクターの今の状態</param>
+    public void Animation(int state)
     {
         switch (state)
         {

@@ -30,6 +30,10 @@ public class PlayerData : MonoBehaviour
         get { return _select_Character; }
     }
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public void EnterName()
     {

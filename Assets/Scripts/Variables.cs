@@ -43,4 +43,9 @@ public static class Variables
         Damage,
         Death,
     }
+
+    #region SceneName
+    public static string _title { get; } = "Title";
+    public static string _mainGame { get; } = "MainGame";
+    #endregion
 }
