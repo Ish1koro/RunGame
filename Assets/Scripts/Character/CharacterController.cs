@@ -49,7 +49,21 @@ public class CharacterController : MonoBehaviour
     #endregion
 
     #region bool
+    
+    /// <summary>
+    /// ジャンプ処理の判定
+    /// </summary>
     protected bool _isJump = default;
+
+    /// <summary>
+    /// ダメージ処理の判定
+    /// </summary>
+    protected bool _isDamage = default;
+
+    /// <summary>
+    /// 死亡処理の判定
+    /// </summary>
+    protected bool _isDeath = default;
 
     /// <summary>
     /// 地面の着地判定
@@ -162,6 +176,27 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void CharacterAnimation()
     {
+        if (_isJump)
+        {
+            _state = (int)Variables.CharaStats.Jump;
+        }
+        else if (!_isGround() && !_isJump)
+        {
+            _state = (int)Variables.CharaStats.Fall;
+        }
+        else if (_isDamage)
+        {
+            _state = (int)Variables.CharaStats.Damage;
+        }
+        else if (_isDeath)
+        {
+            _state = (int)Variables.CharaStats.Death;
+        }
+        else
+        {
+            _state = (int)Variables.CharaStats.Walk;
+        }
+
         _animc.Animation(_state);
     }
 

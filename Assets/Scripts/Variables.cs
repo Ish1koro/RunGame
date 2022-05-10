@@ -11,6 +11,7 @@ public static class Variables
     public static int _five { get; } = 5;
     public static int _six { get; } = 6;
     public static int _seven { get; } = 7;
+    public static int _eight { get; } = 8;
     public static int _ten { get; } = 10;
 
     public static int _ground_Layer { get; } = 1 << 8;
@@ -23,6 +24,8 @@ public static class Variables
     public static string _jump { get; } = "Jump";
 
     public static string _name_Field { get; } = "NameField";
+    
+    public static string _gameController { get; } = "GameController";
     #endregion
 
     #region float

@@ -13,16 +13,21 @@ public class PlayerData : MonoBehaviour
 
     #endregion
 
+    #region ユーザのデータ
+
     /// <summary>
-    /// Playerの名前
+    /// ユーザの名前
     /// </summary>
     private string _player_Name = default;
 
     /// <summary>
-    /// Playerが進ませた距離
+    /// ユーザが進んだ距離
     /// </summary>
     private float _player_Distance = default;
 
+    /// <summary>
+    /// ユーザが使うキャラ
+    /// </summary>
     private int _select_Character = default;
 
     public int _use_Character
@@ -30,11 +35,20 @@ public class PlayerData : MonoBehaviour
         get { return _select_Character; }
     }
 
+    #endregion
+
+    //-------------------------------------------------------------
+
     private void Start()
     {
         DontDestroyOnLoad(this);
     }
 
+    //-------------------------------------------------------------
+
+    /// <summary>
+    /// 名前設定
+    /// </summary>
     public void EnterName()
     {
         if (GameObject.FindWithTag(Variables._name_Field).TryGetComponent(out _name))
@@ -42,9 +56,26 @@ public class PlayerData : MonoBehaviour
             _player_Name = _name.text;
         }
     }
+    
+    //-------------------------------------------------------------
 
+    /// <summary>
+    /// キャラ設定
+    /// </summary>
+    public void SetCharacter(int charaNumber)
+    {
+        _select_Character = charaNumber;
+    }
+
+    //-------------------------------------------------------------
+
+    /// <summary>
+    /// 
+    /// </summary>
     public void PlayDistance()
     {
 
     }
+
+    //-------------------------------------------------------------
 }
