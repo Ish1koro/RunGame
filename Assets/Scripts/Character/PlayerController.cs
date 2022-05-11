@@ -13,13 +13,27 @@ public class PlayerController : CharacterController
     #endregion
 
     private float _move_Distance = default;
+    public float _player_Score
+    {
+        get { return _move_Distance;}
+    }
 
     //-------------------------------------------------------------
 
     protected override void Start()
     {
         base.Start();
+        // 入力クラス取得
         _playerin = GetComponent<PlayerInput>();
+    }
+
+    //-------------------------------------------------------------
+
+    protected override void Update()
+    {
+        base.Update();
+        // 
+        GetDistanse();
     }
 
     //-------------------------------------------------------------
@@ -37,10 +51,12 @@ public class PlayerController : CharacterController
     }
 
     //-------------------------------------------------------------
-
+    /// <summary>
+    /// ユーザのスコア取得
+    /// </summary>
     private void GetDistanse()
     {
-
+        _move_Distance = transform.position.x + Variables._start_position;
     }
 
     //-------------------------------------------------------------

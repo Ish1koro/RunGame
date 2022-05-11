@@ -211,14 +211,4 @@ public class CharacterController : MonoBehaviour
     }
 
     //-------------------------------------------------------------
-
-    /// <summary>
-    /// ƒJƒƒ‰ŠO‚Éo‚½Û‚Ìˆ—
-    /// </summary>
-    private void OnBecameInvisible()
-    {
-
-    }
-
-    //-------------------------------------------------------------
 }

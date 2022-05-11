@@ -17,15 +17,35 @@ public static class Variables
     public static int _ground_Layer { get; } = 1 << 8;
     #endregion
 
+    #region float
+    /// <summary>
+    /// キャラのスタート位置
+    /// </summary>
+    public static float _start_position { get; } = 1.5f;
+    #endregion
+
     #region string
+    /// <summary>
+    /// Scoreの単位
+    /// </summary>
+    public static string _unit { get; } = "m";
+
     /// <summary>
     /// Inputのaction名
     /// </summary>
     public static string _jump { get; } = "Jump";
 
+    /// <summary>
+    /// 名前入力欄のタグ
+    /// </summary>
     public static string _name_Field { get; } = "NameField";
     
+    /// <summary>
+    /// playerData格納場所
+    /// </summary>
     public static string _gameController { get; } = "GameController";
+
+    public static string _player { get; } = "Player";
     #endregion
 
     #region float
