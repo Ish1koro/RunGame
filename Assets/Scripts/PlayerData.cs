@@ -30,6 +30,9 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     private int _select_Character = default;
 
+    /// <summary>
+    /// タイトルで選択したキャラクター
+    /// </summary>
     public int _use_Character
     {
         get { return _select_Character; }

@@ -28,7 +28,7 @@ public static class Variables
     /// <summary>
     /// Scoreの単位
     /// </summary>
-    public static string _unit { get; } = "m";
+    public static string _unit { get; } = "M";
 
     /// <summary>
     /// Inputのaction名

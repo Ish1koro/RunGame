@@ -9,6 +9,7 @@ public class AnimationController : MonoBehaviour
 {
     #region 他クラス参照
     [SerializeField] private AnimationData[] _anim = default;
+    private AnimationData _charaAnimation = default;
 
     private SpriteRenderer _spriteRenderer = default;
 
@@ -21,8 +22,9 @@ public class AnimationController : MonoBehaviour
 
     private void Start()
     {
-        _playerData = GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _charaAnimation = _anim[GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>()._use_Character];
+        Debug.Log(GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>()._use_Character);
     }
 
     /// <summary>
@@ -31,13 +33,10 @@ public class AnimationController : MonoBehaviour
     /// <param name="state">キャラクターの今の状態</param>
     public void Animation(int state)
     {
-        Debug.Log(_count[state]);
-        Debug.Log(_anim[_playerData._use_Character].Fall.GetLength(Variables._zero));
         switch (state)
         {
             case (int)Variables.CharaStats.Idle:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Idle[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Idle.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Idle.GetLength(Variables._zero))
                 {
                     _count[state] += Time.deltaTime;
                 }
@@ -45,11 +44,11 @@ public class AnimationController : MonoBehaviour
                 {
                     _count[state] = Variables._zero;
                 }
+                _spriteRenderer.sprite = _charaAnimation.Idle[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Walk:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Walk[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Walk.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Walk.GetLength(Variables._zero))
                 {
                     _count[state] += Time.deltaTime;
                 }
@@ -57,11 +56,11 @@ public class AnimationController : MonoBehaviour
                 {
                     _count[state] = Variables._zero;
                 }
+                _spriteRenderer.sprite = _charaAnimation.Walk[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Dash:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Dash[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Dash.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Dash.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }
@@ -69,28 +68,28 @@ public class AnimationController : MonoBehaviour
                 {
                     _count[state] = Variables._zero;
                 }
+                _spriteRenderer.sprite = _charaAnimation.Dash[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Jump:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Jump[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Jump.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Jump.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }
 
+                _spriteRenderer.sprite = _charaAnimation.Jump[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Fall:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Fall[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Fall.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Fall.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }
+                _spriteRenderer.sprite = _charaAnimation.Fall[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Damage:
-                _spriteRenderer.sprite = _anim[_playerData._use_Character].Damage[(int)_count[state]];
-                if (_count[state] < _anim[_playerData._use_Character].Damage.GetLength(Variables._zero))
+                if (_count[state] < _charaAnimation.Damage.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }
@@ -99,10 +98,11 @@ public class AnimationController : MonoBehaviour
                     _count[state] = Variables._zero;
                     
                 }
+                _spriteRenderer.sprite = _charaAnimation.Damage[(int)_count[state]];
                 return;
 
             case (int)Variables.CharaStats.Death:
-                //_spriteRenderer.sprite = _anim[_playerData._use_Character].Death[_count[state]];
+                //_spriteRenderer.sprite = _charaAnimation.Death[_count[state]];
                 _count[state] += Time.deltaTime;
                 return;
         }

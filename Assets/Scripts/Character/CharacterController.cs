@@ -106,9 +106,15 @@ public class CharacterController : MonoBehaviour
             Fall();
         }
 
-        CharacterAnimation();
 
         transform.position += (Vector3)_move_Vector;
+    }
+
+    //-------------------------------------------------------------
+
+    private void FixedUpdate()
+    {
+        CharacterAnimation();
     }
 
     //-------------------------------------------------------------
@@ -148,9 +154,11 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
+        /*
         _fall_Timer += Time.deltaTime;
 
         _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
+        */
     }
 
     //-------------------------------------------------------------
@@ -176,25 +184,29 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void CharacterAnimation()
     {
-        if (_isJump)
-        {
-            _state = (int)Variables.CharaStats.Jump;
-        }
-        else if (!_isGround() && !_isJump)
-        {
-            _state = (int)Variables.CharaStats.Fall;
-        }
-        else if (_isDamage)
-        {
-            _state = (int)Variables.CharaStats.Damage;
-        }
-        else if (_isDeath)
+        if (_isDeath)
         {
             _state = (int)Variables.CharaStats.Death;
         }
         else
         {
-            _state = (int)Variables.CharaStats.Walk;
+            if (_isJump)
+            {
+                _state = (int)Variables.CharaStats.Jump;
+            }
+            else if (!_isGround() && !_isJump)
+            {
+                _state = (int)Variables.CharaStats.Fall;
+                Debug.Log((int)Variables.CharaStats.Fall);
+            }
+            else if (_isDamage)
+            {
+                _state = (int)Variables.CharaStats.Damage;
+            }
+            else
+            {
+                _state = (int)Variables.CharaStats.Walk;
+            }
         }
 
         _animc.Animation(_state);
