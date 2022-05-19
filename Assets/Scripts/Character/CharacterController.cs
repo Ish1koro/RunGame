@@ -23,33 +23,21 @@ public class CharacterController : MonoBehaviour
     #endregion
 
     #region int
-    private int _character_Move_Speed = default;
+    private int _character_Move_Speed = Variables._three;
 
     private int _life = default;
-
-    protected int _move_Direction = Variables._one;
 
     private int _state = default;
     #endregion
 
     #region float
-    /// <summary>
-    /// 重力加速度の時間
-    /// </summary>
+
     private float _fall_Timer = default;
 
-    /// <summary>
-    /// Jumpの強さ
-    /// </summary>
-    /// <returns></returns>
-    private float _jumpPower()
-    {
-        return 1;
-    }
     #endregion
 
     #region bool
-    
+
     /// <summary>
     /// ジャンプ処理の判定
     /// </summary>
@@ -107,7 +95,7 @@ public class CharacterController : MonoBehaviour
         }
 
 
-        transform.position += (Vector3)_move_Vector;
+        _rb.velocity = (Vector3)_move_Vector;
     }
 
     //-------------------------------------------------------------
@@ -134,7 +122,7 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Move()
     {
-        _move_Vector.x = _character_Move_Speed * Time.deltaTime;
+        _move_Vector.x = _character_Move_Speed;
     }
 
     //-------------------------------------------------------------
@@ -144,7 +132,7 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Jump()
     {
-        _move_Vector.y = _jumpPower();
+        _move_Vector.y += Variables._two;
     }
 
     //-------------------------------------------------------------
@@ -154,11 +142,9 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
-        /*
         _fall_Timer += Time.deltaTime;
 
         _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
-        */
     }
 
     //-------------------------------------------------------------
@@ -197,7 +183,6 @@ public class CharacterController : MonoBehaviour
             else if (!_isGround() && !_isJump)
             {
                 _state = (int)Variables.CharaStats.Fall;
-                Debug.Log((int)Variables.CharaStats.Fall);
             }
             else if (_isDamage)
             {

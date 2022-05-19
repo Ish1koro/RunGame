@@ -36,7 +36,7 @@ public class AnimationController : MonoBehaviour
         switch (state)
         {
             case (int)Variables.CharaStats.Idle:
-                if ((int)_count[state] < _charaAnimation.Idle.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Walk.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }
@@ -48,7 +48,7 @@ public class AnimationController : MonoBehaviour
                 return;
 
             case (int)Variables.CharaStats.Walk:
-                if ((int)_count[state] < _charaAnimation.Walk.GetLength(Variables._zero))
+                if ((int)_count[state] < _charaAnimation.Walk.Length - Variables._one)
                 {
                     _count[state] += Time.deltaTime;
                 }

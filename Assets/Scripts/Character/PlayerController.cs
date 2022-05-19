@@ -22,9 +22,9 @@ public class PlayerController : CharacterController
 
     protected override void Start()
     {
-        base.Start();
         // “ü—ÍƒNƒ‰ƒXŽæ“¾
         _playerin = GetComponent<PlayerInput>();
+        base.Start();
     }
 
     //-------------------------------------------------------------

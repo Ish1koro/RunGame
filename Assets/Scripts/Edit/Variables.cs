@@ -22,6 +22,9 @@ public static class Variables
     /// キャラのスタート位置
     /// </summary>
     public static float _start_position { get; } = 1.5f;
+
+    public static float _stage_move { get; } = 7.3f;
+    public static float _background_move { get; } = 8.7f;
     #endregion
 
     #region string
@@ -65,6 +68,18 @@ public static class Variables
         Fall,
         Damage,
         Death,
+    }
+
+    public enum BackGround
+    {
+        basic,
+        flip
+    }
+
+    public enum Stage
+    {
+        basic,
+        another
     }
 
     #region SceneName
