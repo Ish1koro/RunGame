@@ -8,6 +8,7 @@ public class ButtonSystem : MonoBehaviour
     #region GameObject
     [SerializeField, Header("最初の選択画面")] private GameObject FirstPanel = default;
     [SerializeField, Header("名前を入力するパネル")] private GameObject NamePanel = default;
+    [SerializeField, Header("ランキング画面")] private GameObject RankingPanel = default;
     [SerializeField, Header("キャラの選択画面")] private GameObject CharaPanel = default;
     [SerializeField, Header("キャラの選択の決定")] private GameObject CharaSubmitButton = default;
     [SerializeField, Header("キャラの選択の戻る")] private GameObject CharaBackButton = default;
@@ -62,6 +63,28 @@ public class ButtonSystem : MonoBehaviour
     {
         NamePanel.SetActive(false);
         FirstPanel.SetActive(true);
+    }
+
+    #endregion
+
+    //-------------------------------------------------------------
+
+    #region ランキング画面
+    /// <summary>
+    /// ランキング画面を表示
+    /// </summary>
+    public void ChangeRanking()
+    {
+        RankingPanel.SetActive(true);
+        FirstPanel.SetActive(false);
+    }
+
+    //-------------------------------------------------------------
+
+    public void BackFirstPanelFromRank()
+    {
+        FirstPanel.SetActive(true);
+        RankingPanel.SetActive(false);
     }
 
     #endregion
