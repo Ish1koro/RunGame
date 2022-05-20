@@ -85,8 +85,6 @@ public class CharacterController : MonoBehaviour
 
                 return;
             }
-
-            _move_Vector.y = Variables._zero;
             _fall_Timer = Variables._zero;
         }
         else

@@ -32,7 +32,7 @@ public class PlayerController : CharacterController
     protected override void Update()
     {
         base.Update();
-        // 
+        // スコアを加算
         GetDistanse();
     }
 
@@ -40,6 +40,7 @@ public class PlayerController : CharacterController
 
     protected override void Input()
     {
+        // ジャンプ入力取得
         _isJump = _playerin.actions[Variables._jump].triggered;
     }
 
@@ -51,6 +52,7 @@ public class PlayerController : CharacterController
     }
 
     //-------------------------------------------------------------
+
     /// <summary>
     /// ユーザのスコア取得
     /// </summary>

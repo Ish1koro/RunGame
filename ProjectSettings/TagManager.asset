@@ -7,7 +7,6 @@ TagManager:
   - Character
   - Enemy
   - NameField
-  - GameController
   layers:
   - Default
   - TransparentFX
