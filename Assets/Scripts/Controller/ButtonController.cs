@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonSystem : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
     #region GameObject
     [SerializeField, Header("ç≈èâÇÃëIëâÊñ ")] private GameObject FirstPanel = default;
@@ -127,10 +127,22 @@ public class ButtonSystem : MonoBehaviour
 
     //-------------------------------------------------------------
 
+    #region MainGame
+    public void ChangeResult()
+    {
+        SceneManager.LoadScene(Variables._result);
+    }
+    #endregion
+
+    //-------------------------------------------------------------
+
+    #region Result
     public void ChangeTitle()
     {
+        Destroy(GameObject.FindWithTag(Variables._gameController));
         SceneManager.LoadScene(Variables._title);
     }
+    #endregion
 
     //-------------------------------------------------------------
 }

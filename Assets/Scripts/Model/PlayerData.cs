@@ -19,11 +19,19 @@ public class PlayerData : MonoBehaviour
     /// ユーザの名前
     /// </summary>
     private string _player_Name = default;
+    public string _get_Name
+    {
+        get { return _player_Name; }
+    }
 
     /// <summary>
     /// ユーザが進んだ距離
     /// </summary>
     private float _player_Distance = default;
+    public float _get_Score
+    {
+        get { return _player_Distance; }
+    }
 
     /// <summary>
     /// ユーザが使うキャラ

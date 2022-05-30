@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class RankSystem : MonoBehaviour
 {
-    private var url = "htttp://"
+    private string url = "htttp://";
     private void Start()
     {
         

@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : CharacterController
 {
     #region 他クラス参照
-    /// <summary>
-    /// Playerの入力をとる
-    /// </summary>
-    private PlayerInput _playerin = default;
+    private Input _playerin = default;
     #endregion
 
     private float _move_Distance = default;
@@ -22,8 +18,7 @@ public class PlayerController : CharacterController
 
     protected override void Start()
     {
-        // 入力クラス取得
-        _playerin = GetComponent<PlayerInput>();
+        _playerin = new Input();
         base.Start();
     }
 
@@ -41,7 +36,7 @@ public class PlayerController : CharacterController
     protected override void Input()
     {
         // ジャンプ入力取得
-        _isJump = _playerin.actions[Variables._jump].triggered;
+        _isJump = _playerin.InGame.Jump.triggered;
     }
 
     //-------------------------------------------------------------

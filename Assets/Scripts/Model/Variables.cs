@@ -37,6 +37,11 @@ public static class Variables
     /// Inputのaction名
     /// </summary>
     public static string _jump { get; } = "Jump";
+    
+    /// <summary>
+    /// Inputのaction名
+    /// </summary>
+    public static string _pause { get; } = "Pause";
 
     /// <summary>
     /// 名前入力欄のタグ
@@ -57,6 +62,12 @@ public static class Variables
     public static float _chracter_jump_height { get; } = 5;
 
     public static float _default_Gravity { get; } = -9.8f;
+    #endregion
+
+    #region SceneName
+    public static string _title { get; } = "Title";
+    public static string _mainGame { get; } = "MainGame";
+    public static string _result { get; } = "Result";
     #endregion
 
     public enum CharaStats
@@ -81,9 +92,4 @@ public static class Variables
         basic,
         another
     }
-
-    #region SceneName
-    public static string _title { get; } = "Title";
-    public static string _mainGame { get; } = "MainGame";
-    #endregion
 }
