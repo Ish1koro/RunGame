@@ -14,6 +14,9 @@ public static class Variables
     public static int _eight { get; } = 8;
     public static int _ten { get; } = 10;
 
+    /// <summary>
+    /// 地面のレイヤー
+    /// </summary>
     public static int _ground_Layer { get; } = 1 << 8;
     #endregion
 
@@ -22,8 +25,14 @@ public static class Variables
     /// キャラのスタート位置
     /// </summary>
     public static float _start_position { get; } = 1.5f;
-
+    /// <summary>
+    /// ステージの動く距離
+    /// </summary>
     public static float _stage_move { get; } = 7.3f;
+
+    /// <summary>
+    /// 背景の動く距離
+    /// </summary>
     public static float _background_move { get; } = 8.7f;
     #endregion
 
@@ -53,14 +62,21 @@ public static class Variables
     /// </summary>
     public static string _gameController { get; } = "GameController";
 
+    /// <summary>
+    /// Player
+    /// </summary>
     public static string _player { get; } = "Player";
     #endregion
 
     #region float
+    /// <summary>
+    /// 自機の大きさ
+    /// </summary>
     public static float _character_height { get; } = 0.26f;
 
-    public static float _chracter_jump_height { get; } = 5;
-
+    /// <summary>
+    /// 重力の大きさ
+    /// </summary>
     public static float _default_Gravity { get; } = -9.8f;
     #endregion
 
@@ -70,6 +86,11 @@ public static class Variables
     public static string _result { get; } = "Result";
     #endregion
 
+    #region enum
+
+    /// <summary>
+    /// キャラの状態
+    /// </summary>
     public enum CharaStats
     {
         Idle,
@@ -81,15 +102,23 @@ public static class Variables
         Death,
     }
 
+    /// <summary>
+    /// 背景の種類
+    /// </summary>
     public enum BackGround
     {
         basic,
         flip
     }
 
+    /// <summary>
+    /// ステージの種類
+    /// </summary>
     public enum Stage
     {
         basic,
         another
     }
+
+    #endregion
 }

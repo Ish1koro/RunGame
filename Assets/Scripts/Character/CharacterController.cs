@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterController : MonoBehaviour
 {
@@ -13,6 +9,7 @@ public class CharacterController : MonoBehaviour
     private AnimationController _animc = default;
 
     protected Rigidbody2D _rb = default;
+
     #endregion
 
     #region Vector2
@@ -37,12 +34,6 @@ public class CharacterController : MonoBehaviour
     #endregion
 
     #region bool
-
-    /// <summary>
-    /// ジャンプ処理の判定
-    /// </summary>
-    protected bool _isJump = default;
-
     /// <summary>
     /// ダメージ処理の判定
     /// </summary>
@@ -61,11 +52,14 @@ public class CharacterController : MonoBehaviour
     {
         return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
     }
+
+    public bool _isJump = default;
+    public bool _isPause = default;
     #endregion
 
     //-------------------------------------------------------------
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         _animc = GetComponent<AnimationController>();
         _rb = GetComponent<Rigidbody2D>();
@@ -75,12 +69,18 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
+        InputMethod();
+
+        // 移動
         Move();
 
+        // 着地判定によって変更
         if (_isGround())
         {
+            // ジャンプ中であれば
             if (_isJump)
             {
+                // ジャンプのメソッド
                 Jump();
 
                 return;
@@ -89,10 +89,11 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            // 落下のメソッド
             Fall();
         }
 
-
+        // velocityに入れる
         _rb.velocity = (Vector3)_move_Vector;
     }
 
@@ -108,7 +109,7 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// 入力のクラス(親ではいじらない)
     /// </summary>
-    protected virtual void Input()
+    protected virtual void InputMethod()
     {
 
     }

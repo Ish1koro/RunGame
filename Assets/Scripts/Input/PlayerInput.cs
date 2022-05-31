@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/Input.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/PlayerInput.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @Input : IInputActionCollection, IDisposable
+public class @PlayerInput : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @Input()
+    public @PlayerInput()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""Input"",
+    ""name"": ""PlayerInput"",
     ""maps"": [
         {
             ""name"": ""InGame"",
@@ -577,8 +577,8 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Pause;
     public struct InGameActions
     {
-        private @Input m_Wrapper;
-        public InGameActions(@Input wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInput m_Wrapper;
+        public InGameActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_InGame_Jump;
         public InputAction @Pause => m_Wrapper.m_InGame_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
@@ -624,8 +624,8 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Navigate;
     public struct UIActions
     {
-        private @Input m_Wrapper;
-        public UIActions(@Input wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInput m_Wrapper;
+        public UIActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;

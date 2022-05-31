@@ -12,8 +12,6 @@ public class AnimationController : MonoBehaviour
     private AnimationData _charaAnimation = default;
 
     private SpriteRenderer _spriteRenderer = default;
-
-    private PlayerData _playerData = default;
     #endregion
 
     #region int
