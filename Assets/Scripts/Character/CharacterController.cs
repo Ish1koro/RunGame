@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 敵とプレイヤーの親クラス
+/// </summary>
 public class CharacterController : MonoBehaviour
 {
     #region 他クラス参照

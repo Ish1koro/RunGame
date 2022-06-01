@@ -34,6 +34,16 @@ public static class Variables
     /// 背景の動く距離
     /// </summary>
     public static float _background_move { get; } = 8.7f;
+
+    /// <summary>
+    /// 自機の大きさ
+    /// </summary>
+    public static float _character_height { get; } = 0.26f;
+
+    /// <summary>
+    /// 重力の大きさ
+    /// </summary>
+    public static float _default_Gravity { get; } = -9.8f;
     #endregion
 
     #region string
@@ -66,18 +76,6 @@ public static class Variables
     /// Player
     /// </summary>
     public static string _player { get; } = "Player";
-    #endregion
-
-    #region float
-    /// <summary>
-    /// 自機の大きさ
-    /// </summary>
-    public static float _character_height { get; } = 0.26f;
-
-    /// <summary>
-    /// 重力の大きさ
-    /// </summary>
-    public static float _default_Gravity { get; } = -9.8f;
     #endregion
 
     #region SceneName

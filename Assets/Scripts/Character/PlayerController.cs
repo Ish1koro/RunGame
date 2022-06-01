@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの入力、処理
+/// </summary>
 public class PlayerController : CharacterController
 {
     #region 他クラス参照
