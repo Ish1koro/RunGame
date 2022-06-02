@@ -1,5 +1,6 @@
-﻿// 読み取り専用の変数を定義するクラス
-// マジックナンバー防止用
+﻿/// <summary>
+/// 読み取り専用の変数を定義するクラス
+/// </summary>
 public static class Variables
 {
     #region int 
@@ -25,6 +26,7 @@ public static class Variables
     /// キャラのスタート位置
     /// </summary>
     public static float _start_position { get; } = 1.5f;
+
     /// <summary>
     /// ステージの動く距離
     /// </summary>
@@ -98,6 +100,7 @@ public static class Variables
         Fall,
         Damage,
         Death,
+        Length
     }
 
     /// <summary>

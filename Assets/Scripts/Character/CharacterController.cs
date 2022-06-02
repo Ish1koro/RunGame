@@ -17,23 +17,38 @@ public class CharacterController : MonoBehaviour
 
     #region Vector2
     /// <summary>
-    /// characterが移動する距離
+    /// characterが移動する力
     /// </summary>
     protected Vector2 _move_Vector = default;
     #endregion
 
     #region int
-    private int _character_Move_Speed = Variables._three;
+    /// <summary>
+    /// キャラの動くスピード
+    /// </summary>
+    private int _character_Move_Speed = default;
 
+    /// <summary>
+    /// キャラのライフ
+    /// </summary>
     private int _life = default;
 
+    /// <summary>
+    /// キャラの状態
+    /// </summary>
     private int _state = default;
+
+    /// <summary>
+    /// 前回の処理でのキャラの状態
+    /// </summary>
+    private int _old_Character_State = default;
     #endregion
 
     #region float
-
+    /// <summary>
+    /// 重力で使用予定
+    /// </summary>
     private float _fall_Timer = default;
-
     #endregion
 
     #region bool
@@ -48,6 +63,16 @@ public class CharacterController : MonoBehaviour
     protected bool _isDeath = default;
 
     /// <summary>
+    /// ジャンプ開始の判定
+    /// </summary>
+    public bool _isJump = default;
+
+    /// <summary>
+    /// ポーズの判定
+    /// </summary>
+    public bool _isPause = default;
+    
+    /// <summary>
     /// 地面の着地判定
     /// </summary>
     /// <returns>Groundのレイヤーだったらtrue</returns>
@@ -55,9 +80,6 @@ public class CharacterController : MonoBehaviour
     {
         return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
     }
-
-    public bool _isJump = default;
-    public bool _isPause = default;
     #endregion
 
     //-------------------------------------------------------------
@@ -66,38 +88,32 @@ public class CharacterController : MonoBehaviour
     {
         _animc = GetComponent<AnimationController>();
         _rb = GetComponent<Rigidbody2D>();
+        _character_Move_Speed = Variables._three;
     }
 
     //-------------------------------------------------------------
 
     protected virtual void Update()
     {
+        // 入力
         InputMethod();
 
-        // 移動
-        Move();
-
-        // 着地判定によって変更
-        if (_isGround())
+        if (!_isPause)
         {
-            // ジャンプ中であれば
-            if (_isJump)
+            // 移動
+            Move();
+
+            // 着地判定によって変更
+            if (_isGround())
             {
-                // ジャンプのメソッド
                 Jump();
-
-                return;
             }
-            _fall_Timer = Variables._zero;
+            else
+            {
+                // 落下のメソッド
+                Fall();
+            }
         }
-        else
-        {
-            // 落下のメソッド
-            Fall();
-        }
-
-        // velocityに入れる
-        _rb.velocity = (Vector3)_move_Vector;
     }
 
     //-------------------------------------------------------------
@@ -124,6 +140,9 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Move()
     {
+        // velocityに入れる
+        _rb.velocity = (Vector3)_move_Vector;
+
         _move_Vector.x = _character_Move_Speed;
     }
 
@@ -134,7 +153,23 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Jump()
     {
-        _move_Vector.y += Variables._two;
+        // ジャンプが押されたら
+        if (_isJump)
+        {
+            //　velocityに入れる
+            _move_Vector.y += Variables._two;
+
+            _rb.gravityScale = Variables._one;
+
+            // フラグを変更
+            _isJump = false;
+        }
+        else
+        {
+            _rb.gravityScale = Variables._zero;
+
+            _move_Vector.y =  Variables._zero;
+        }
     }
 
     //-------------------------------------------------------------
@@ -144,9 +179,7 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
-        _fall_Timer += Time.deltaTime;
-
-        _move_Vector.y = Variables._default_Gravity / (_fall_Timer * _fall_Timer);
+        _rb.gravityScale = Variables._one;
     }
 
     //-------------------------------------------------------------
@@ -178,11 +211,11 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            if (_isJump)
+            if (_isJump || _rb.velocity.y > Variables._zero)
             {
                 _state = (int)Variables.CharaStats.Jump;
             }
-            else if (!_isGround() && !_isJump)
+            else if (!_isGround() || _rb.velocity.y < Variables._zero)
             {
                 _state = (int)Variables.CharaStats.Fall;
             }
@@ -196,7 +229,9 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        _animc.Animation(_state);
+        _animc.Animation(_state, _old_Character_State);
+
+        _old_Character_State = _state;
     }
 
     //-------------------------------------------------------------
@@ -204,7 +239,7 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// 死亡した際の処理
     /// </summary>
-    private void Death()
+    protected virtual void Death()
     {
 
     }

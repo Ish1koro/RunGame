@@ -7,10 +7,15 @@ public class PlayerController : CharacterController
 {
     #region 他クラス参照
     private PlayerInput _playerin = default;
+
+    private PlayerData _playerData = default;
     #endregion
 
     #region GameObject
-    [SerializeField] private GameObject _pauseUI = default;
+    /// <summary>
+    /// ポーズ時のUI
+    /// </summary>
+    [SerializeField] private GameObject _pause_UI = default;
     #endregion
 
     #region float
@@ -21,7 +26,6 @@ public class PlayerController : CharacterController
     }
     #endregion
 
-
     //-------------------------------------------------------------
 
     protected override void Awake()
@@ -29,23 +33,25 @@ public class PlayerController : CharacterController
         base.Awake();
 
         _playerin = new PlayerInput();
+
+        _playerData = GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>();
     }
 
     //-------------------------------------------------------------
 
     protected override void Update()
     {
+        base.Update();
+        
         // ポーズ処理
         Pause();
 
+        //ポーズ状態じゃなければ
         if (!_isPause)
         {
-            base.Update();
-
             // スコアを加算
             GetDistanse();
         }
-
     }
 
     //-------------------------------------------------------------
@@ -55,22 +61,17 @@ public class PlayerController : CharacterController
     /// </summary>
     protected override void InputMethod()
     {
-
         // ジャンプ入力取得
-        _isJump = _playerin.InGame.Jump.triggered;
-
-        _isPause = _playerin.InGame.Pause.triggered;
-
+        _isJump = _playerin.InGame.Jump.triggered; 
     }
 
     //-------------------------------------------------------------
 
-    /// <summary>
-    /// ジャンプのメソッド
-    /// </summary>
-    protected override void Jump()
+    protected override void Death()
     {
-        base.Jump();
+        base.Death();
+
+        _playerData.PlayScore(_player_Score);
     }
 
     //-------------------------------------------------------------
@@ -85,21 +86,24 @@ public class PlayerController : CharacterController
 
     //-------------------------------------------------------------
 
+    /// <summary>
+    /// ポーズTimeScaleを0にする
+    /// </summary>
     private void Pause()
     {
         if (_isPause)
         {
-            _pauseUI.SetActive(true);
+            _pause_UI.SetActive(true);
             Time.timeScale = Variables._zero;
         }
         else
         {
-            _pauseUI.SetActive(false);
+            _pause_UI.SetActive(false);
             Time.timeScale = Variables._one;
         }
     }
 
-    //-------------------------------------------------------------
+    //InputSystem--------------------------------------------------
 
     private void OnEnable()
     {

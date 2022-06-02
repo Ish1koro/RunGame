@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerData : MonoBehaviour
 {
     #region 他クラス参照
+
     /// <summary>
     /// 名前入力クラス
     /// </summary>
@@ -27,10 +28,10 @@ public class PlayerData : MonoBehaviour
     /// <summary>
     /// ユーザが進んだ距離
     /// </summary>
-    private float _player_Distance = default;
+    private float _player_Score = default;
     public float _get_Score
     {
-        get { return _player_Distance; }
+        get { return _player_Score; }
     }
 
     /// <summary>
@@ -81,11 +82,11 @@ public class PlayerData : MonoBehaviour
     //-------------------------------------------------------------
 
     /// <summary>
-    /// 
+    /// Score集計
     /// </summary>
-    public void PlayDistance()
+    public void PlayScore(float score)
     {
-
+        _player_Score = score;
     }
 
     //-------------------------------------------------------------
