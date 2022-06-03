@@ -26,12 +26,12 @@ public class AnimationController : MonoBehaviour
     /// Spriteが切り替わるスピード
     /// 式: アニメーションする時間 / Spriteの数
     /// </summary>
-    private float[] _animation_Speed = new float[Variables._seven];
+    private float[] _animation_Speed = new float[Variables._six];
 
     /// <summary>
     /// 現在のスプライト
     /// </summary>
-    private float[] _animation_Count = new float[Variables._seven];
+    private float[] _animation_Count = new float[Variables._six];
     #endregion
 
     //-------------------------------------------------------------
@@ -138,12 +138,6 @@ public class AnimationController : MonoBehaviour
             case (int)Variables.CharaStats.Damage:
                 _spriteRenderer.sprite = _charaAnimation.Damage[(int)_animation_Count[state]];
                 return;
-
-            #region 現在未実装
-            case (int)Variables.CharaStats.Death:
-                //_spriteRenderer.sprite = _charaAnimation.Death[_count[state]];
-                return;
-            #endregion
         }
     }
 }

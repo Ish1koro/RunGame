@@ -99,7 +99,6 @@ public static class Variables
         Jump,
         Fall,
         Damage,
-        Death,
         Length
     }
 
