@@ -83,11 +83,6 @@ public class CharacterController : MonoBehaviour
     /// ジャンプ中の判定
     /// </summary>
     private bool _isJumping = default;
-
-    /// <summary>
-    /// ポーズの判定
-    /// </summary>
-    protected bool _isPause = default;
     
     /// <summary>
     /// 地面の着地判定
@@ -115,26 +110,23 @@ public class CharacterController : MonoBehaviour
         // 入力
         InputMethod();
 
-        if (!_isPause)
-        {
-            // 移動
-            Move();
+        // 移動
+        Move();
 
-            if ((_isGround() && _isJump) || _isJumping)
-            {
-                // ジャンプの処理
-                Jump();
-            }
-            else if (_isGround())
-            {
-                // 着地時の処理
-                OnGround();
-            }
-            else if(!_isJumping)
-            {
-                // 落下処理
-                Fall();
-            }
+        if ((_isGround() && _isJump) || _isJumping)
+        {
+            // ジャンプの処理
+            Jump();
+        }
+        else if (_isGround())
+        {
+            // 着地時の処理
+            OnGround();
+        }
+        else if (!_isJumping)
+        {
+            // 落下処理
+            Fall();
         }
     }
 

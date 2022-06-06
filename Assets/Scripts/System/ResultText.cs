@@ -17,6 +17,7 @@ public class ResultText : MonoBehaviour
     private void Start()
     {
         _data = GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>();
+        InputText();
     }
 
     /// <summary>

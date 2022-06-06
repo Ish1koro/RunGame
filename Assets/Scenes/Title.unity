@@ -2468,7 +2468,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &179460579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4393,7 +4395,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &342956497
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6327,7 +6331,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &523570101
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6817,7 +6823,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
+  m_Text: 'Name
+
+'
 --- !u!222 &555796748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15632,7 +15640,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1344701605
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15873,7 +15883,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1389118106
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17439,7 +17451,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1563530116
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18182,7 +18196,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1629340476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18508,7 +18524,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1651242444
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19204,7 +19222,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &1723099488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22843,7 +22863,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 'Score
+
+'
 --- !u!222 &2110394882
 CanvasRenderer:
   m_ObjectHideFlags: 0

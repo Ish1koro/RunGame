@@ -130,6 +130,8 @@ public class ButtonController : MonoBehaviour
     #region MainGame
     public void ChangeResult()
     {
+        PlayerController player = GameObject.FindWithTag(Variables._player).GetComponent<PlayerController>();
+        GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>().PlayScore(player._player_Score);
         SceneManager.LoadScene(Variables._result);
     }
     #endregion

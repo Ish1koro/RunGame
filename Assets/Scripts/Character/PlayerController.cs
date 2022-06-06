@@ -11,13 +11,6 @@ public class PlayerController : CharacterController
     private PlayerData _playerData = default;
     #endregion
 
-    #region GameObject
-    /// <summary>
-    /// ポーズ時のUI
-    /// </summary>
-    [SerializeField] private GameObject _pause_UI = default;
-    #endregion
-
     #region float
     private float _move_Distance = default;
     public float _player_Score
@@ -42,16 +35,9 @@ public class PlayerController : CharacterController
     protected override void Update()
     {
         base.Update();
-        
-        // ポーズ処理
-        Pause();
 
-        //ポーズ状態じゃなければ
-        if (!_isPause)
-        {
-            // スコアを加算
-            GetDistanse();
-        }
+        // スコアを加算
+        GetDistanse();
     }
 
     //-------------------------------------------------------------
@@ -63,9 +49,6 @@ public class PlayerController : CharacterController
     {
         // ジャンプ入力取得
         _isJump = _playerin.InGame.Jump.triggered;
-
-        // ポーズ入力取得
-        _isPause = _playerin.InGame.Pause.triggered;
     }
 
     //-------------------------------------------------------------
@@ -85,25 +68,6 @@ public class PlayerController : CharacterController
     private void GetDistanse()
     {
         _move_Distance = transform.position.x + Variables._start_position;
-    }
-
-    //-------------------------------------------------------------
-
-    /// <summary>
-    /// ポーズTimeScaleを0にする
-    /// </summary>
-    private void Pause()
-    {
-        if (_isPause)
-        {
-            _pause_UI.SetActive(true);
-            Time.timeScale = Variables._zero;
-        }
-        else
-        {
-            _pause_UI.SetActive(false);
-            Time.timeScale = Variables._one;
-        }
     }
 
     //InputSystem--------------------------------------------------
