@@ -1150,6 +1150,7 @@ GameObject:
   - component: {fileID: 1668083285}
   - component: {fileID: 1668083287}
   - component: {fileID: 1668083284}
+  - component: {fileID: 1668083286}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -1290,6 +1291,55 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9f34cdf3c7ef1f418396d29998de178, type: 2}
   - {fileID: 11400000, guid: 9f14dbec57709c0478d0ce4826009057, type: 2}
   - {fileID: 11400000, guid: 49d27760efcf3ee44b08b5000e8e07b3, type: 2}
+--- !u!68 &1668083286
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668083280}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.019753635, y: 0.21007657}
+  - {x: -0.034748554, y: 0.16707635}
+  - {x: -0.10177088, y: 0.1729095}
+  - {x: -0.15576029, y: 0.10618383}
+  - {x: -0.14400005, y: 0.053531468}
+  - {x: -0.094971895, y: 0.0025686026}
+  - {x: -0.04955125, y: -0.008248687}
+  - {x: -0.079464674, y: -0.035922408}
+  - {x: -0.054279804, y: -0.12884402}
+  - {x: -0.035113335, y: -0.14960778}
+  - {x: -0.06586456, y: -0.23430151}
+  - {x: -0.043201208, y: -0.26036483}
+  - {x: 0.0070152283, y: -0.25983012}
+  - {x: -0.012365341, y: -0.21515888}
+  - {x: 0.016230583, y: -0.15607709}
+  - {x: 0.032381773, y: -0.20627254}
+  - {x: 0.030238628, y: -0.25291276}
+  - {x: 0.08184099, y: -0.25021684}
+  - {x: 0.06292105, y: -0.16457939}
+  - {x: 0.10422921, y: -0.08867812}
+  - {x: 0.081567764, y: -0.06347841}
+  - {x: 0.0866971, y: -0.025234342}
+  - {x: 0.04889393, y: 0.0076058507}
+  - {x: 0.09423876, y: 0.047391593}
+  - {x: 0.07713342, y: 0.083740056}
+  - {x: 0.08929658, y: 0.10594219}
+  - {x: 0.03512478, y: 0.14063531}
+  - {x: 0.056660652, y: 0.16593832}
+  - {x: 0.020446599, y: 0.21137339}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!50 &1668083287
 Rigidbody2D:
   serializedVersion: 4
