@@ -17248,8 +17248,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 865333580}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+      - m_Target: {fileID: 865333579}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
