@@ -62,7 +62,10 @@ public class PlayerController : CharacterController
     protected override void InputMethod()
     {
         // ジャンプ入力取得
-        _isJump = _playerin.InGame.Jump.triggered; 
+        _isJump = _playerin.InGame.Jump.triggered;
+
+        // ポーズ入力取得
+        _isPause = _playerin.InGame.Pause.triggered;
     }
 
     //-------------------------------------------------------------

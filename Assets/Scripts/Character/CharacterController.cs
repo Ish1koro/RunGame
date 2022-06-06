@@ -11,8 +11,9 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private AnimationController _animc = default;
 
-    protected Rigidbody2D _rb = default;
+    [SerializeField] private AnimationCurve _jumpCurve = default;
 
+    [SerializeField] private AnimationCurve _fallCurve = default;
     #endregion
 
     #region Vector2
@@ -50,10 +51,12 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private float _fall_Timer = default;
 
+    private float _jump_Timer = default;
+
     /// <summary>
     /// ジャンプ時の初速度計算
     /// </summary>
-    /// <returns> -初速度(m/s)＝重力 * 時間(s)- 速度(m/s)</returns>
+    /// <returns> -初速度(m/s) ＝ 重力 * 時間(s) - 速度(m/s)</returns>
     private float _Initialvelocity()
     {
         return Mathf.Sqrt(-Variables._default_Gravity * Variables._two - Variables._two);
@@ -74,12 +77,17 @@ public class CharacterController : MonoBehaviour
     /// <summary>
     /// ジャンプ開始の判定
     /// </summary>
-    public bool _isJump = default;
+    protected bool _isJump = default;
+
+    /// <summary>
+    /// ジャンプ中の判定
+    /// </summary>
+    private bool _isJumping = default;
 
     /// <summary>
     /// ポーズの判定
     /// </summary>
-    public bool _isPause = default;
+    protected bool _isPause = default;
     
     /// <summary>
     /// 地面の着地判定
@@ -96,7 +104,6 @@ public class CharacterController : MonoBehaviour
     protected virtual void Awake()
     {
         _animc = GetComponent<AnimationController>();
-        _rb = GetComponent<Rigidbody2D>();
         _character_Move_Speed = Variables._three;
     }
 
@@ -104,7 +111,7 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(_Initialvelocity());
+        Debug.Log(_move_Vector);
         // 入力
         InputMethod();
 
@@ -113,15 +120,19 @@ public class CharacterController : MonoBehaviour
             // 移動
             Move();
 
-            // 着地判定によって変更
-            if (_isGround())
+            if ((_isGround() && _isJump) || _isJumping)
             {
-                // 着地しているときの処理
+                // ジャンプの処理
                 Jump();
             }
-            else
+            else if (_isGround())
             {
-                // 落下のメソッド
+                // 着地時の処理
+                OnGround();
+            }
+            else if(!_isJumping)
+            {
+                // 落下処理
                 Fall();
             }
         }
@@ -152,10 +163,10 @@ public class CharacterController : MonoBehaviour
     protected virtual void Move()
     {
         // velocityに入れる
-        _rb.velocity = (Vector3)_move_Vector;
+        transform.position += (Vector3)_move_Vector;
 
         // 
-        _move_Vector.x = _character_Move_Speed;
+        _move_Vector.x = _character_Move_Speed * Time.deltaTime;
     }
 
     //-------------------------------------------------------------
@@ -165,24 +176,34 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     protected virtual void Jump()
     {
-        // 落下していないときに0にする
-        if (_fall_Timer != Variables._zero)
+        // ジャンプのフラグを立てる
+        if (!_isJumping)
         {
-            _fall_Timer = Variables._zero;
+            _isJumping = true;
         }
+        
+        // ジャンプしている時間を加算
+        _jump_Timer += Time.deltaTime;
 
-        // ジャンプが押されたら
-        /// 速度(m/s)＝加速度(m/s2)×時間(s) + 初速度(m/s)
-        if (_isJump || _rb.velocity.y != Variables._zero)
-        {
-            _move_Vector.y = Variables._default_Gravity * Variables._one;
-        }
-        else
-        {
-            _rb.gravityScale = Variables._zero;
+        // veloctyに入れる
+        _move_Vector.y = _jumpCurve.Evaluate(_jump_Timer) * 2 * Time.deltaTime;
 
-            _move_Vector.y = Variables._zero;
+        // ジャンプ時間が1秒以上だったら
+        if (_jump_Timer > Variables._one)
+        {
+            // フラグを消す
+            _isJumping = false;
+            _jump_Timer = Variables._zero;
         }
+    }
+
+    //-------------------------------------------------------------
+
+    private void OnGround()
+    {
+        _move_Vector.y = Variables._zero;
+
+        _fall_Timer = Variables._zero;
     }
 
     //-------------------------------------------------------------
@@ -193,7 +214,7 @@ public class CharacterController : MonoBehaviour
     private void Fall()
     {
         _fall_Timer += Time.deltaTime;
-        _move_Vector.y += Variables._default_Gravity / (_fall_Timer * _fall_Timer) * Time.deltaTime;
+        _move_Vector.y += Variables._default_Gravity * _fallCurve.Evaluate(_fall_Timer) *Time.deltaTime;
     }
 
     //-------------------------------------------------------------
@@ -219,11 +240,11 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void CharacterAnimation()
     {
-        if (_isJump || _rb.velocity.y > Variables._zero)
+        if (_isJump || _isJumping)
         {
             _state = (int)Variables.CharaStats.Jump;
         }
-        else if (!_isGround() || _rb.velocity.y < Variables._zero)
+        else if (!_isGround())
         {
             _state = (int)Variables.CharaStats.Fall;
         }
