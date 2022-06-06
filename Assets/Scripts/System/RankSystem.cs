@@ -1,25 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Networking;
-using System.Threading;
-using System.Threading.Tasks;
+using UnityEngine;
 
 public class RankSystem : MonoBehaviour
 {
-    private UnityWebRequest request = UnityWebRequest.Get("http://");
-
-    async Task Start()
+    /// <summary>
+    /// Jsonにするクラス
+    /// </summary>
+    [SerializeField]
+    private sealed class Data
     {
-        yield return request.SendWebRequest();
+        public int _id = default;
+        public string _name = default;
+        public float _score = default;
+    }
 
-        await Start();
-        
-        //3.isNetworkErrorとisHttpErrorでエラー判定
-        if (request.isHttpError || request.isNetworkError)
-        {
-            //4.エラー確認
-            Debug.Log(request.error);
-        }
+    private void Start()
+    {
+        StartCoroutine(Send());
+    }
+
+    private IEnumerator Send()
+    {
+        Data data = new Data();
+        PlayerData playerData = GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>();
+
+        // 名前を入力
+        data._name = playerData._get_Name;
+        // スコアを入力
+        data._score = playerData._get_Score;
+        // Jsonに変換
+        string communicate_object = JsonUtility.ToJson(data);
+        // byteに変換
+        byte[] postData = System.Text.Encoding.UTF8.GetBytes(communicate_object);
+        UnityWebRequest request = new UnityWebRequest(Variables._url, "POST");
+        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(postData);
+        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        yield return request.SendWebRequest();
     }
 }

@@ -78,6 +78,8 @@ public static class Variables
     /// Player
     /// </summary>
     public static string _player { get; } = "Player";
+
+    public static string _url { get; } = "153.120.3.118/";
     #endregion
 
     #region SceneName
