@@ -886,7 +886,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _pause_UI: {fileID: 0}
 --- !u!212 &1668083282
 SpriteRenderer:
   m_ObjectHideFlags: 0
