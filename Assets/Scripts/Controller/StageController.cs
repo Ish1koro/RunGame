@@ -45,7 +45,7 @@ public class StageController : MonoBehaviour
     private void Start()
     {
         _player = GameObject.FindWithTag(Variables._player);
-        _stage_Number = (int)Variables.Stage.another;
+        _stage_Number = (int)Variables.Stage.fall;
         _background_Number = (int)Variables.BackGround.flip;
         _stage_Position = _stage_Objects[_stage_Number].transform.position;
         _background_Position = _backGrounds[_background_Number].transform.position;
@@ -80,6 +80,9 @@ public class StageController : MonoBehaviour
                 _stage_Number = (int)Variables.Stage.another;
                 break;
             case (int)Variables.Stage.another:
+                _stage_Number = (int)Variables.Stage.fall;
+                break;
+            case (int)Variables.Stage.fall:
                 _stage_Number = (int)Variables.Stage.basic;
                 break;
         }

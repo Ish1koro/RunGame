@@ -21,6 +21,16 @@ public class CharacterController : MonoBehaviour
     /// characterが移動する力
     /// </summary>
     protected Vector2 _move_Vector = default;
+
+    /// <summary>
+    /// キャラのX座標の大きさ
+    /// </summary>
+    private Vector2 _chara_Scale_x = new Vector2(0.14f, 0);
+
+    /// <summary>
+    /// キャラのX座標の大きさ
+    /// </summary>
+    private Vector2 _chara_Scale_y = new Vector2(0, 0.45f);
     #endregion
 
     #region int
@@ -51,6 +61,9 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private float _fall_Timer = default;
 
+    /// <summary>
+    /// ジャンプしている時間
+    /// </summary>
     private float _jump_Timer = default;
 
     /// <summary>
@@ -83,14 +96,23 @@ public class CharacterController : MonoBehaviour
     /// ジャンプ中の判定
     /// </summary>
     private bool _isJumping = default;
-    
+
     /// <summary>
     /// 地面の着地判定
     /// </summary>
     /// <returns>Groundのレイヤーだったらtrue</returns>
     protected bool _isGround()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer);
+        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer)
+    }
+
+    /// <summary>
+    /// 移動不可能の判定
+    /// </summary>
+    /// <returns></returns>
+    protected bool _cantMove()
+    {
+        return Physics2D.BoxCast(transform.position, _chara_Scale_y, Variables._zero, Vector2.right, Variables._chara_width, Variables._ground_Layer);
     }
     #endregion
 
@@ -106,7 +128,8 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(_move_Vector);
+        Debug.Log(_isGround());
+
         // 入力
         InputMethod();
 
@@ -205,8 +228,10 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
+        /*
         _fall_Timer += Time.deltaTime;
         _move_Vector.y += Variables._default_Gravity * _fallCurve.Evaluate(_fall_Timer) *Time.deltaTime;
+        */
     }
 
     //-------------------------------------------------------------

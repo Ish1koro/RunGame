@@ -43,6 +43,11 @@ public static class Variables
     public static float _character_height { get; } = 0.26f;
 
     /// <summary>
+    /// 自機の横幅
+    /// </summary>
+    public static float _chara_width { get; } = 0.08f;
+
+    /// <summary>
     /// 重力の大きさ
     /// </summary>
     public static float _default_Gravity { get; } = -9.8f;
@@ -79,7 +84,10 @@ public static class Variables
     /// </summary>
     public static string _player { get; } = "Player";
 
-    public static string _url { get; } = "153.120.3.118/";
+    /// <summary>
+    /// サーバーのurl
+    /// </summary>
+    public static string _url { get; } = "153.120.3.118/var/www/Test.php";
     #endregion
 
     #region SceneName
@@ -119,7 +127,8 @@ public static class Variables
     public enum Stage
     {
         basic,
-        another
+        another,
+        fall
     }
 
     #endregion
