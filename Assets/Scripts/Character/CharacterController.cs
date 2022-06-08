@@ -23,14 +23,15 @@ public class CharacterController : MonoBehaviour
     protected Vector2 _move_Vector = default;
 
     /// <summary>
-    /// キャラのX座標の大きさ
+    /// 着地判定時Rayを出すX座標の位置
     /// </summary>
-    private Vector2 _chara_Scale_x = new Vector2(0.14f, 0);
+    private Vector2 _horizontal = new Vector2(0.08f, 0);
 
     /// <summary>
     /// キャラのX座標の大きさ
     /// </summary>
-    private Vector2 _chara_Scale_y = new Vector2(0, 0.45f);
+    private Vector2 _vertical_up = new Vector2(0, 0.21f);
+    private Vector2 _vertical_down = new Vector2(0, 0.24f);
     #endregion
 
     #region int
@@ -103,16 +104,28 @@ public class CharacterController : MonoBehaviour
     /// <returns>Groundのレイヤーだったらtrue</returns>
     protected bool _isGround()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, Variables._character_height, Variables._ground_Layer)
+        bool hit = !Physics2D.Raycast(transform.position + (Vector3)_horizontal, Vector2.down, Variables._character_height, Variables._ground_Layer) && !Physics2D.Raycast(transform.position - (Vector3)_horizontal, Vector2.down, Variables._character_height, Variables._ground_Layer);
+
+
+        if (hit)
+        {
+            return false;
+        }
+        return true;
     }
 
     /// <summary>
     /// 移動不可能の判定
     /// </summary>
     /// <returns></returns>
-    protected bool _cantMove()
+    protected bool _canMove()
     {
-        return Physics2D.BoxCast(transform.position, _chara_Scale_y, Variables._zero, Vector2.right, Variables._chara_width, Variables._ground_Layer);
+        bool hit = !Physics2D.Raycast(transform.position + (Vector3)_vertical_up, Vector2.down, Variables._character_height, Variables._ground_Layer) && !Physics2D.Raycast(transform.position - (Vector3)_vertical_down, Vector2.down, Variables._character_height, Variables._ground_Layer);
+        if (hit)
+        {
+            return true;
+        }
+        return false;
     }
     #endregion
 
@@ -129,7 +142,6 @@ public class CharacterController : MonoBehaviour
     protected virtual void Update()
     {
         Debug.Log(_isGround());
-
         // 入力
         InputMethod();
 
@@ -179,9 +191,14 @@ public class CharacterController : MonoBehaviour
     {
         // velocityに入れる
         transform.position += (Vector3)_move_Vector;
-
-        // 
-        _move_Vector.x = _character_Move_Speed * Time.deltaTime;
+        if (_canMove())
+        {
+            _move_Vector.x = _character_Move_Speed * Time.deltaTime;
+        }
+        else
+        {
+            _move_Vector.x = Variables._zero;
+        }
     }
 
     //-------------------------------------------------------------
@@ -204,7 +221,7 @@ public class CharacterController : MonoBehaviour
         _move_Vector.y = _jumpCurve.Evaluate(_jump_Timer) * 2 * Time.deltaTime;
 
         // ジャンプ時間が1秒以上だったら
-        if (_jump_Timer > Variables._one)
+        if (_jump_Timer >= Variables._max_Jump_Time)
         {
             // フラグを消す
             _isJumping = false;
@@ -228,10 +245,8 @@ public class CharacterController : MonoBehaviour
     /// </summary>
     private void Fall()
     {
-        /*
         _fall_Timer += Time.deltaTime;
-        _move_Vector.y += Variables._default_Gravity * _fallCurve.Evaluate(_fall_Timer) *Time.deltaTime;
-        */
+        _move_Vector.y += Variables._default_Gravity * _fallCurve.Evaluate(_fall_Timer) * Time.deltaTime;
     }
 
     //-------------------------------------------------------------
@@ -287,6 +302,13 @@ public class CharacterController : MonoBehaviour
     protected virtual void Death()
     {
 
+    }
+
+    //-------------------------------------------------------------
+
+    protected virtual void OnBecameInvisible()
+    {
+        
     }
 
     //-------------------------------------------------------------

@@ -9,6 +9,8 @@ public class PlayerController : CharacterController
     private PlayerInput _playerin = default;
 
     private PlayerData _playerData = default;
+
+    private ButtonController _buttonController = default;
     #endregion
 
     #region float
@@ -28,6 +30,8 @@ public class PlayerController : CharacterController
         _playerin = new PlayerInput();
 
         _playerData = GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>();
+
+        _buttonController = GameObject.FindWithTag(Variables._canvas).GetComponent<ButtonController>();
     }
 
     //-------------------------------------------------------------
@@ -56,8 +60,7 @@ public class PlayerController : CharacterController
     protected override void Death()
     {
         base.Death();
-
-        _playerData.PlayScore(_player_Score);
+        _buttonController.ChangeResult();
     }
 
     //-------------------------------------------------------------
@@ -68,6 +71,15 @@ public class PlayerController : CharacterController
     private void GetDistanse()
     {
         _move_Distance = transform.position.x + Variables._start_position;
+    }
+
+    //-------------------------------------------------------------
+
+    protected override void OnBecameInvisible()
+    {
+        base.OnBecameInvisible();
+
+        _buttonController.ChangeResult();
     }
 
     //InputSystem--------------------------------------------------

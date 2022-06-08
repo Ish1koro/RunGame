@@ -51,6 +51,8 @@ public static class Variables
     /// 重力の大きさ
     /// </summary>
     public static float _default_Gravity { get; } = -9.8f;
+
+    public static float _max_Jump_Time { get; } = 0.5f;
     #endregion
 
     #region string
@@ -80,9 +82,14 @@ public static class Variables
     public static string _gameController { get; } = "GameController";
 
     /// <summary>
-    /// Player
+    /// PlayerのTag
     /// </summary>
     public static string _player { get; } = "Player";
+
+    /// <summary>
+    /// CanvasのTag
+    /// </summary>
+    public static string _canvas { get; } = "Canvas";
 
     /// <summary>
     /// サーバーのurl

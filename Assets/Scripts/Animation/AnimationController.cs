@@ -43,8 +43,6 @@ public class AnimationController : MonoBehaviour
         _charaAnimation = _anim[GameObject.FindWithTag(Variables._gameController).GetComponent<PlayerData>()._use_Character];
         
         GetAnimationLength();
-
-        SetAniamtionSpeed();
     }
 
     //-------------------------------------------------------------
@@ -71,17 +69,6 @@ public class AnimationController : MonoBehaviour
         {
             _animation_Speed[count] = 30 / _animation_Length[count];
         }
-    }
-
-    //-------------------------------------------------------------
-
-    /// <summary>
-    /// アニメーションするスピードを設定
-    /// </summary>
-    private void SetAniamtionSpeed()
-    {
-        Debug.Log((int)Variables.CharaStats.Length);
-        
     }
 
     //-------------------------------------------------------------
