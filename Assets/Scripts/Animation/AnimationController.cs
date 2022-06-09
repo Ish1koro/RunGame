@@ -67,7 +67,7 @@ public class AnimationController : MonoBehaviour
         
         for (int count = default; count < (int)Variables.CharaStats.Length; count++)
         {
-            _animation_Speed[count] = 30 / _animation_Length[count];
+            _animation_Speed[count] = Variables._thirty / _animation_Length[count];
         }
     }
 

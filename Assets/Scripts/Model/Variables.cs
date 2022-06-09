@@ -14,7 +14,7 @@ public static class Variables
     public static int _seven { get; } = 7;
     public static int _eight { get; } = 8;
     public static int _ten { get; } = 10;
-
+    public static int _thirty { get; } = 30;
     /// <summary>
     /// 地面のレイヤー
     /// </summary>
