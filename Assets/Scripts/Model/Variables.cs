@@ -52,7 +52,7 @@ public static class Variables
     /// </summary>
     public static float _default_Gravity { get; } = -9.8f;
 
-    public static float _max_Jump_Time { get; } = 0.5f;
+    public static float _max_Jump_Time { get; } = 0.35f;
     #endregion
 
     #region string

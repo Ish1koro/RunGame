@@ -807,7 +807,6 @@ GameObject:
   - component: {fileID: 1668083281}
   - component: {fileID: 1668083285}
   - component: {fileID: 1668083284}
-  - component: {fileID: 1668083286}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -840,7 +839,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.34453443
     - serializedVersion: 3
-      time: 0.5
+      time: 0.35
       value: 0
       inSlope: -0.7685041
       outSlope: -0.7685041
@@ -875,7 +874,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  scale: 0.09
 --- !u!212 &1668083282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -993,27 +991,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9f34cdf3c7ef1f418396d29998de178, type: 2}
   - {fileID: 11400000, guid: 9f14dbec57709c0478d0ce4826009057, type: 2}
   - {fileID: 11400000, guid: 49d27760efcf3ee44b08b5000e8e07b3, type: 2}
---- !u!50 &1668083286
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668083280}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1681898656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,29 +1585,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6521643d5ba0a0b4aac7fb012f2eed9c, type: 3}
---- !u!1 &8484942409735665406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8484942410965922589, guid: 6521643d5ba0a0b4aac7fb012f2eed9c, type: 3}
-  m_PrefabInstance: {fileID: 8484942409735665405}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &8484942409735665407
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8484942409735665406}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

@@ -120,7 +120,7 @@ public class CharacterController : MonoBehaviour
     /// <returns></returns>
     protected bool _canMove()
     {
-        bool hit = !Physics2D.Raycast(transform.position + (Vector3)_vertical_up, Vector2.down, Variables._character_height, Variables._ground_Layer) && !Physics2D.Raycast(transform.position - (Vector3)_vertical_down, Vector2.down, Variables._character_height, Variables._ground_Layer);
+        bool hit = !Physics2D.Raycast(transform.position + (Vector3)_vertical_up, Vector2.right, Variables._character_height, Variables._ground_Layer) && !Physics2D.Raycast(transform.position - (Vector3)_vertical_down, Vector2.right, Variables._character_height, Variables._ground_Layer);
         if (hit)
         {
             return true;
